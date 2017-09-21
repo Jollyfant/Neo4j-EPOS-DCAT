@@ -1,4 +1,8 @@
+import json
 from neo4j.v1 import GraphDatabase, basic_auth
+
+with open("config.json") as conf:
+  CONFIG = json.load(conf)  
 
 class Neo4JDB:
 
@@ -6,19 +10,14 @@ class Neo4JDB:
   Neo4J Database Class for EPOS Metadata ingestion
   """
 
-  USER = "neo4j"
-  PASS = "fjyjer"
-  HOST = "localhost"
-  PROTOCOL = "bolt://"
-
-  PORT = 7687
+  host = "bolt://%s:%s" % (CONFIG["HOST"], CONFIG["PORT"])
 
   def __init__(self):
 
     # Get a driver
     self.driver = GraphDatabase.driver(
-      self.PROTOCOL + self.HOST + ":" + str(self.PORT),
-      auth=basic_auth(self.USER, self.PASS)
+      self.host,
+      auth=basic_auth(CONFIG["USER"], CONFIG["PASS"])
     )
 
   def CreateNode(self, thing):
