@@ -25,6 +25,6 @@
       <eposap:legalContact>vertices/person/reinoud-sleeman.xml</eposap:legalContact>
       <eposap:financialContact>vertices/person/reinoud-sleeman.xml</eposap:financialContact>
       <eposap:isPartOf />
-      <eposap:associatedProjects />
+      <eposap:associatedProjects>vertices/project/epos-ip.xml</eposap:associatedProjects>
    </eposap:Organisation>
 </eposap:Epos>

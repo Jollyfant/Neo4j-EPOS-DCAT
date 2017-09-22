@@ -1,5 +1,5 @@
 import xml.etree.ElementTree
-from EPOSClasses import Person, Organization, WebService
+from EPOSClasses import Person, Organization, WebService, Project, Publication
 
 class EPOSXMLParser:
 
@@ -30,7 +30,11 @@ class EPOSXMLParser:
       # Get the tags branch
       if branch.tag == self.EPOS + "Person":
         self.node = Person(branch, identifier)
-      if branch.tag == self.EPOS + "Organisation":
+      elif branch.tag == self.EPOS + "Organisation":
         self.node = Organization(branch, identifier)
-      if branch.tag == self.EPOS + "WebService":
+      elif branch.tag == self.EPOS + "WebService":
         self.node = WebService(branch, identifier)
+      elif branch.tag == self.EPOS + "Project":
+        self.node = Project(branch, identifier)
+      elif branch.tag == self.EPOS + "Publication":
+        self.node = Publication(branch, identifier)

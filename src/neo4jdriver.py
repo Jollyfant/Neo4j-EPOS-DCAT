@@ -36,4 +36,5 @@ class Neo4JDB:
 
   def CreateEdges(self, edges):
     for edge in edges:
+      print "Adding edge."
       self.driver.session().run(edge)

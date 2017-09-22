@@ -43,10 +43,14 @@ class EPOSClass:
       return "eposap:Person"
     elif identifier == "dcat:contactPoint":
       return "eposap:Person"
+    elif identifier == "eposap:authors":
+      return "eposap:Person"
     elif identifier == "eposap:affiliation":
       return "eposap:Organization"
     elif identifier == "eposap:publisher":
       return "eposap:Organization"
+    elif identifier == "eposap:associatedProjects":
+      return "eposap:Project"
     else:
       raise ValueError("Unknown resource label (%s)" % identifier)
 
@@ -70,13 +74,12 @@ class EPOSClass:
   def AddEdge(self, root, identifier):
 
     namespace, name = identifier.split(":")
-    _element = root.find(self.Namespace(namespace) + name)
+    for _element in root.findall(self.Namespace(namespace) + name):
+      if _element is not None and _element.text is not None:
 
-    if _element is not None and _element.text is not None:
-
-      # Get the label of the target
-      targetLabel = self.GetResourceLabel(identifier)
-      self.CreateEdgeQuery(self.Label, self.URI, targetLabel, _element.text, identifier)
+        # Get the label of the target
+        targetLabel = self.GetResourceLabel(identifier)
+        self.CreateEdgeQuery(self.Label, self.URI, targetLabel, _element.text, identifier)
 
   def AddAttribute(self, root, identifier):
 
@@ -173,7 +176,38 @@ class Organization(EPOSClass):
     # eposap:legalContact references a eposap:Person vertice
     self.AddEdge(root, "eposap:legalContact")
     self.AddEdge(root, "eposap:financialContact")
+    self.AddEdge(root, "eposap:associatedProjects")
      
+
+class Publication(EPOSClass):
+
+  def __init__(self, root, URI):
+
+    EPOSClass.__init__(self, URI)
+
+    # Check Person namespace
+    if root.tag != self.NAMESPACES["epos"] + "Publication":
+      raise ValueError("Document does not have correct Project namespace (%s)" % URI)
+
+    # vcard attributes
+    self.AddAttribute(root, "dct:title")
+
+    self.AddEdge(root, "eposap:authors")
+
+class Project(EPOSClass):
+
+  def __init__(self, root, URI):
+
+    EPOSClass.__init__(self, URI)
+
+    # Check Person namespace
+    if root.tag != self.NAMESPACES["epos"] + "Project":
+      raise ValueError("Document does not have correct Project namespace (%s)" % URI)
+
+    # vcard attributes
+    self.AddAttribute(root, "dct:title")
+    self.AddAttribute(root, "dct:description")
+
 
 class Person(EPOSClass):
 
