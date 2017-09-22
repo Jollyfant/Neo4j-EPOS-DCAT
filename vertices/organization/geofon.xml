@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eposap:Epos xmlns:eposap="http://www.epos-ip.org/terms.html" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:cnt="http://www.w3.org/2008/content#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dct="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:http="http://www.w3.org/2006/http#" xmlns:locn="http://www.w3.org/ns/locn#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:schema="http://schema.org/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.epos-ip.org/terms.html https://raw.githubusercontent.com/epos-eu/EPOS-DCAT-AP/master/schemas/EPOS-DCAT-AP.xsd">
+   <!-- EPOS Organisation -->
+   <eposap:Organisation>
+      <!-- Title (english) -->
+      <vcard:fn>GFZ German Research Centre for Geosciences</vcard:fn>
+      <!-- Title (native lang) -->
+      <vcard:organization-name xml:lang="de">Helmholtz Zentrum Potsdam Deutsches GeoForschungsZentrum GFZ</vcard:organization-name>
+      <!-- Postal Address -->
+      <vcard:hasAddress>
+         <vcard:Address>
+            <vcard:street-address>Telegrafenberg</vcard:street-address>
+            <vcard:locality>Potsdam</vcard:locality>
+            <vcard:postal-code>14473</vcard:postal-code>
+            <vcard:country-name>Germany</vcard:country-name>
+         </vcard:Address>
+      </vcard:hasAddress>
+      <!-- Email -->
+      <vcard:hasEmail>info@gfz-potsdam.de</vcard:hasEmail>
+      <!-- Website -->
+      <vcard:hasURL>http://www.gfz-potsdam.de/</vcard:hasURL>
+      <!-- Logo -->
+      <vcard:hasLogo>https://media.gfz-potsdam.de/gfz/wv/05_Medien_Kommunikation/Bildarchiv/GFZ%20Logo/temp_xs/LOGO-GFZ-en-mitFreistellungsraum_RGB_24bit_300dpi_546x390-jpg.jpg</vcard:hasLogo>
+      <!-- Unique Identifier -->
+      <!-- GFZ PIC from the EU Research Council -->
+      <!-- Scientific Contact -->
+      <eposap:scientificContact>vertices/person/javier-quinteros.xml</eposap:scientificContact>
+      <!-- Spatial Coordinates -->
+      <dct:spatial>
+         <dct:Location>
+            <!-- POINT(lon lat elevation) -->
+            <locn:geometry>POINT(13.06636 52.38294)</locn:geometry>
+         </dct:Location>
+      </dct:spatial>
+      <!-- Type -->
+      <dct:type>Public Research Institute</dct:type>
+      <!-- Legal Contact -->
+      <eposap:legalContact>mailto:marko.blau@gfz-potsdam.de</eposap:legalContact>
+      <!-- Financial Contact -->
+      <eposap:financialContact>mailto:stephan.ott@gfz-potsdam.de</eposap:financialContact>
+      <!-- isPartOf TODO: Should we add GFZ as part of ORFEUS? -->
+      <!-- <eposap:isPartOf>PIC:997012076</eposap:isPartOf> -->
+      <eposap:associatedProjects>vertices/project/epos-ip.xml</eposap:associatedProjects>
+   </eposap:Organisation>
+</eposap:Epos>

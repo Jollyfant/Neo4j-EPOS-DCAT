@@ -41,6 +41,8 @@ class EPOSClass:
       return "eposap:Person"
     elif identifier == "eposap:financialContact":
       return "eposap:Person"
+    elif identifier == "eposap:scientificContact":
+      return "eposap:Person"
     elif identifier == "dcat:contactPoint":
       return "eposap:Person"
     elif identifier == "eposap:authors":
@@ -176,6 +178,7 @@ class Organization(EPOSClass):
     # eposap:legalContact references a eposap:Person vertice
     self.AddEdge(root, "eposap:legalContact")
     self.AddEdge(root, "eposap:financialContact")
+    self.AddEdge(root, "eposap:scientificContact")
     self.AddEdge(root, "eposap:associatedProjects")
      
 
@@ -185,14 +188,16 @@ class Publication(EPOSClass):
 
     EPOSClass.__init__(self, URI)
 
-    # Check Person namespace
+    # Check namespace
     if root.tag != self.NAMESPACES["epos"] + "Publication":
-      raise ValueError("Document does not have correct Project namespace (%s)" % URI)
+      raise ValueError("Document does not have correct Publication namespace (%s)" % URI)
 
-    # vcard attributes
+    # dct: attributes
     self.AddAttribute(root, "dct:title")
 
+    # Add all the authors
     self.AddEdge(root, "eposap:authors")
+
 
 class Project(EPOSClass):
 
