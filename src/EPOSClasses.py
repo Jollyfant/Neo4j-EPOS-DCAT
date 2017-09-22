@@ -12,6 +12,7 @@ class EPOSClass:
   # Namespace definitions for XML parsing
   NAMESPACES = {
     "dct": "{http://purl.org/dc/terms/}",
+    "dcat": "{http://www.w3.org/ns/dcat#}",
     "locn": "{http://www.w3.org/ns/locn#}",
     "schema": "{http://schema.org/}",
     "vcard": "{http://www.w3.org/2006/vcard/ns#}",
@@ -40,6 +41,12 @@ class EPOSClass:
       return "eposap:Person"
     elif identifier == "eposap:financialContact":
       return "eposap:Person"
+    elif identifier == "dcat:contactPoint":
+      return "eposap:Person"
+    elif identifier == "eposap:affiliation":
+      return "eposap:Organization"
+    elif identifier == "eposap:publisher":
+      return "eposap:Organization"
     else:
       raise ValueError("Unknown resource label (%s)" % identifier)
 
@@ -135,6 +142,9 @@ class WebService(EPOSClass):
     self.AddAttribute(root, "eposap:subDomain")
     self.AddAttribute(root, "eposap:operation")
 
+    self.AddEdge(root, "dcat:contactPoint")
+    self.AddEdge(root, "eposap:publisher")
+
 
 class Organization(EPOSClass):
 
@@ -184,3 +194,5 @@ class Person(EPOSClass):
     self.AddAttribute(root, "vcard:hasEmail")
     self.AddAttribute(root, "vcard:hasTelephone")
     self.AddAttribute(root, "vcard:hasURL")
+
+    self.AddEdge(root, "eposap:affiliation")

@@ -17,7 +17,7 @@
       <!-- Email -->
       <vcard:hasTelephone>+310302206297</vcard:hasTelephone>
       <!-- Unique Identifier -->
-      <eposap:affiliation>PIC:999518944</eposap:affiliation>
+      <eposap:affiliation>vertices/organization/orfeus.xml</eposap:affiliation>
       <!-- Organisation -->
       <dct:language>
          <!-- Language for contact -->
