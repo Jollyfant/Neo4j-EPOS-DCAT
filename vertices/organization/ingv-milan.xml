@@ -21,8 +21,6 @@
       <!-- Logo -->
       <vcard:hasLogo>http://roma2.rm.ingv.it/userfiles/file/Logo/INGV_Logo-abbr_colore.jpg</vcard:hasLogo>
       <!-- Unique Identifier -->
-      <!-- GFZ PIC from the EU Research Council -->
-      <dct:identifier>PIC:999472675</dct:identifier>
       <!-- Scientific Contact -->
       <eposap:scientificContact>http://orcid.org/0000-0003-2480-1999</eposap:scientificContact>
       <!-- Spatial Coordinates -->
@@ -40,5 +38,6 @@
       <eposap:financialContact>http://orcid.org/0000-0003-2480-1999</eposap:financialContact>
       <!-- isPartOf TODO: Should we add INGV as part of ORFEUS? -->
       <!-- <eposap:isPartOf>pic:997012076</eposap:isPartOf> -->
+      <eposap:associatedProjects>vertices/project/epos-ip.xml</eposap:associatedProjects>
    </eposap:Organisation>
 </eposap:Epos>

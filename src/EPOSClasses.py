@@ -57,6 +57,10 @@ class EPOSClass:
       raise ValueError("Unknown resource label (%s)" % identifier)
 
 
+  def GetURILabel(self, URI):
+
+    return URI.split("/")[1]
+
   def CreateEdgeQuery(self, fromLabel, fromURI, toLabel, toURI, relation):
 
     """
